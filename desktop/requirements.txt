@@ -1,0 +1,26 @@
+# PixelSpryte Dependencies
+# Install: pip install -r requirements.txt
+
+# Core
+pydantic>=2.0
+pyyaml
+requests
+python-dotenv
+truststore   # Windows cert store for TLS (needed w/ Avast HTTPS scanning)
+
+# Video processing
+opencv-python
+scenedetect[opencv]
+
+# Transcription (requires CUDA for GPU mode)
+faster-whisper
+
+# Audio sync (cross-correlation)
+numpy
+scipy
+
+# Optional: for future features
+# ffmpeg-python
+# pillow
+# pytesseract
+

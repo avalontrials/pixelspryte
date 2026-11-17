@@ -1,0 +1,147 @@
+# PixelSpryte Configuration — Webinar / Industry Briefing
+# Optimized for long-form scripted recordings with cleanup editing.
+
+llm:
+  # Choose ONE backend. Comment out the other.
+
+  # --- Option A: Local (KoboldCPP + Qwen3-4B) ---
+  # Good for quick tests. Limited context window (~4K tokens).
+  # backend: "koboldcpp"
+  # api_url: "http://localhost:5001"
+  # model_name: "Qwen3-4B-Q4_K_M"
+
+  # --- Option B: Cloud API (DeepSeek, OpenAI-compatible) ---
+  # Much better for 40-min transcript analysis. Cheap (~$0.01-0.05 per run).
+  backend: "openai_compatible"
+  api_url: "https://api.deepseek.com/v1"
+  api_key: ""                          # Leave empty — loaded from .env (DEEPSEEK_API_KEY)
+  model_name: "deepseek-v4-pro"
+
+  temperature: 0.2          # Low for precise editing decisions
+  max_tokens: 4096          # Enough for full EDL output
+  top_p: 0.9
+
+brand:
+  name: "Arthur Avalon — Industry Briefing"
+  font: "Montserrat-Bold"
+  color_primary: "#B8A04A"   # Gold
+  color_secondary: "#2D3436"  # Slate
+
+edit_defaults:
+  target_minutes: 40         # Webinar target ~38-42 min
+  allow_jumpcuts: true       # YES — cut flubs, dead air, restarts
+  allow_zoom_ins: false      # NO — webinar uses deliberate camera framing
+  zoom_max_scale: 1.0
+  captions: "styled"         # Full captions — audience watches at low volume
+  music: "none"              # NO music during content. Optional on end card only.
+  broll: "none"              # NO stock footage. Authenticity is the brand.
+  loudness_lufs: -14
+  duck_db: -20
+  remove_filler: true        # Cut "um", "uh", "so yeah", "like"
+  remove_dead_air: true      # Cut silences > 3 seconds (except intentional beats)
+  remove_repeated_takes: true # Cut when speaker restarts a sentence
+  keep_structure:
+    - "Cold Open"
+    - "The Quiet Crisis"
+    - "Why Obvious Answers Fail"
+    - "Digital Equity Model"
+    - "Backend Walkthrough"
+    - "Objection Handling"
+    - "Future Pace"
+    - "Offer and Close"
+
+editing_framework:
+  # Webinar retention rules — adapted from MrBeast for long-form scripted content
+  phases:
+    cold_open:
+      duration_percent: [0, 2]
+      avg_shot_length_seconds: [3, 6]
+      energy_requirement: "high"
+      priorities:
+        - "pattern_interrupt"
+        - "match_thumbnail_expectations"
+        - "no_intro_cards_no_music"
+
+    problem_agitation:
+      duration_percent: [2, 20]
+      avg_shot_length_seconds: [5, 10]
+      energy_requirement: "medium_high"
+      priorities:
+        - "build_emotional_weight"
+        - "allow_intentional_pauses"
+        - "cut_filler_and_restarts"
+
+    education:
+      duration_percent: [20, 50]
+      avg_shot_length_seconds: [6, 15]
+      energy_requirement: "medium"
+      priorities:
+        - "clarity_over_speed"
+        - "preserve_screen_share_segments"
+        - "cut_tangents_and_repetition"
+
+    objection_handling:
+      duration_percent: [50, 75]
+      avg_shot_length_seconds: [5, 12]
+      energy_requirement: "medium_high"
+      priorities:
+        - "never_cut_objection_content"
+        - "precision_matters"
+        - "keep_all_reframes"
+
+    close:
+      duration_percent: [75, 100]
+      avg_shot_length_seconds: [6, 15]
+      energy_requirement: "calm_conviction"
+      priorities:
+        - "unhurried_delivery"
+        - "preserve_future_pace"
+        - "no_rushing_the_close"
+        - "clean_ending"
+
+  # Webinar-specific rules
+  rules:
+    visual_change_max_interval_sec: 60    # Never same visual > 60s
+    intentional_beat_max_sec: 3           # Scripted pauses up to 3s are intentional
+    dead_air_threshold_sec: 4             # Silence > 4s = cut candidate
+    filler_words: ["um", "uh", "like", "so yeah", "you know", "basically", "actually"]
+    restart_detection: true               # Detect "wait let me...", false starts
+    preserve_open_loops: true             # Never cut the bridge sentences between sections
+
+source_files:
+  # Two video clips (camera overheated mid-recording)
+  video_part1: "inputs/briefing1.mp4"
+  video_part2: "inputs/briefing2.mp4"
+  audio_master: "inputs/webinaraudio.wav"
+  script_reference: "inputs/industry_briefing_v3.md"
+
+  # How to handle the two clips:
+  # 1. Concatenate part1 + part2 into one timeline
+  # 2. Replace camera audio with Audacity master track (better quality)
+  # 3. Sync via waveform cross-correlation or manual offset
+
+audio:
+  sync_method: "waveform"    # Cross-correlate camera audio with Audacity track
+  replace_camera_audio: true # Use Audacity track as master, discard camera audio
+  normalize: true
+  target_lufs: -14
+
+color:
+  lut_path: ""               # Optional .cube LUT applied to every clip
+
+subtitles:
+  resolve_ai: false          # true = also run Resolve AI captions after build
+
+review:
+  reason_markers: true       # Green marker on each clip: why the AI kept it
+
+export:
+  timeline_backup: true      # OTIO backup of every auto-edit
+
+paths:
+  project_root: "C:\\PixelSpryte"
+  inputs_dir: "inputs"
+  outputs_dir: "outputs"
+  script_dir: "inputs"
+  davinci_renders: "D:\\Davinci"
+

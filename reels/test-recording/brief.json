@@ -1,0 +1,31 @@
+{
+  "slug": "test-recording",
+  "name": "Test Recording",
+  "canvas": {
+    "w": 1080,
+    "h": 1920,
+    "fps": 30
+  },
+  "footage": [
+    {
+      "path": "source.mp4",
+      "in": 0.0,
+      "out": 3.18
+    },
+    {
+      "path": "source.mp4",
+      "in": 4.82,
+      "out": 8.18
+    },
+    {
+      "path": "source.mp4",
+      "in": 9.82,
+      "out": 14.0
+    }
+  ],
+  "captions_mode": "none",
+  "render": {
+    "preset": "TikTok - 1080p",
+    "name": "test-recording_v1"
+  }
+}

@@ -1,0 +1,20 @@
+# build outputs (rebuildable from briefs)
+out/
+# secrets
+.env
+# generated + large media
+assets/media/
+assets/broll/*.mp4
+assets/music/*.mp3
+__pycache__/
+*.pyc
+out_build.log
+dist/
+.fal_uploads.json
+
+# my own projects and media - not for distribution
+reels/sterling-*/
+STERLING_*_HANDOFF.md
+assets/characters/
+docs/contact-sheet.jpg
+docs/pixelspryte-demo-720.mp4

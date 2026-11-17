@@ -1,0 +1,15 @@
+{
+  "slug": "demo_subtitles",
+  "name": "PixelSpryte soft-subtitle regression",
+  "canvas": { "w": 1080, "h": 1920, "fps": 30 },
+  "footage": [
+    { "path": "assets/media/demo_a.mp4", "in": 0.0, "out": 4.0 },
+    { "path": "assets/media/demo_b.mp4", "in": 0.0, "out": 4.0 }
+  ],
+  "captions_mode": "subtitle",
+  "captions": [
+    { "start": 0.3, "end": 2.6, "text": "Soft subtitles should import as a subtitle track." },
+    { "start": 4.2, "end": 7.2, "text": "They are not burned into the render." }
+  ],
+  "render": { "preset": "TikTok - 1080p", "name": "demo_subtitles_v1" }
+}

@@ -1,0 +1,36 @@
+{
+  "slug": "demo_layers",
+  "name": "PixelSpryte layer-order regression",
+  "canvas": { "w": 1080, "h": 1920, "fps": 30 },
+  "footage": [
+    { "path": "assets/media/demo_a.mp4", "in": 0.0, "out": 4.0 },
+    { "path": "assets/media/demo_c.mp4", "in": 0.0, "out": 4.0 }
+  ],
+  "video_layers": [
+    {
+      "name": "V2-broll",
+      "clips": [
+        { "path": "assets/media/demo_b.mp4", "at": 1.0, "in": 0.0, "out": 2.0 }
+      ]
+    }
+  ],
+  "overlays": [
+    {
+      "at": 0.0,
+      "dur": 2.0,
+      "card": {
+        "kicker": "LAYER TEST",
+        "headline": "B-ROLL BELOW CAPTIONS",
+        "subhead": "V1 footage, V2 b-roll, V3 captions, V4 graphics.",
+        "y_frac": 0.10,
+        "headline_frac": 0.052
+      }
+    }
+  ],
+  "captions_mode": "burn",
+  "captions": [
+    { "start": 0.3, "end": 2.8, "text": "Captions must sit above the b-roll." },
+    { "start": 3.0, "end": 5.8, "text": "Graphics must sit above the captions." }
+  ],
+  "render": { "preset": "TikTok - 1080p", "name": "demo_layers_v1" }
+}

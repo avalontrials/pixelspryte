@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PixelSpryte</title>
+<link rel="stylesheet" href="/app/style.css">
+</head>
+<body>
+<header class="bar">
+  <div class="brand">
+    <span class="dot"></span>
+    <strong>PixelSpryte</strong>
+    <span class="tag">makes videos in DaVinci Resolve</span>
+  </div>
+  <div id="resolve" class="pill">Checking Resolve...</div>
+</header>
+
+<main>
+  <aside class="side">
+    <section class="block">
+      <h2>Your videos</h2>
+      <ul id="list" class="list"></ul>
+    </section>
+
+    <section class="block new">
+      <h2>Start a new one</h2>
+      <div class="tabs">
+        <button id="tab-template" class="tab on">From a template</button>
+        <button id="tab-record" class="tab">From my recording</button>
+      </div>
+
+      <input id="name" type="text" placeholder="Name it, like my-first-reel" autocomplete="off">
+
+      <div class="shape-label">Shape</div>
+      <div class="formats" id="formats"></div>
+
+      <div id="record-box" class="record-box" hidden>
+        <label class="drop" id="drop">
+          <input id="file" type="file" accept="video/mp4,video/quicktime,video/*" hidden>
+          <b id="filename">Choose a video</b>
+          <span>MP4 or MOV. It stays on this computer.</span>
+        </label>
+        <label class="pause">
+          How tight?
+          <select id="pause">
+            <option value="0.45">Tight - cut every little gap</option>
+            <option value="0.7" selected>Normal</option>
+            <option value="1.2">Loose - keep the pauses</option>
+          </select>
+        </label>
+      </div>
+
+      <button id="create" class="primary">Create</button>
+      <p id="newmsg" class="msg"></p>
+    </section>
+  </aside>
+
+  <section class="main">
+    <div class="empty" id="empty">
+      <h1>Make a video.</h1>
+      <p class="lead">PixelSpryte builds the timeline in DaVinci Resolve and makes the MP4. You press one button.</p>
+      <ol class="steps">
+        <li><b>Open DaVinci Resolve.</b> Leave it open.</li>
+        <li><b>Start a video.</b> Use a template, or drop in a recording.</li>
+        <li><b>Press Make it.</b> Watch the log. The video appears.</li>
+      </ol>
+      <p class="hint">Pick a video on the left, or start a new one.</p>
+    </div>
+
+    <div class="work" id="work" hidden>
+      <div class="head">
+        <div>
+          <h1 id="title">-</h1>
+          <p id="sub" class="sub">-</p>
+        </div>
+        <button id="build" class="primary big">Make it</button>
+      </div>
+
+      <div class="stage" id="stage">
+        <div class="wait" id="wait">No video yet. Press "Make it".</div>
+      </div>
+
+      <div class="links" id="links"></div>
+
+      <details class="log" open>
+        <summary>What is happening</summary>
+        <pre id="log">Ready.</pre>
+      </details>
+    </div>
+  </section>
+</main>
+
+<script src="/app/app.js"></script>
+</body>
+</html>

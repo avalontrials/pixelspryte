@@ -1,0 +1,4 @@
+# PixelSpryte runtime deps
+# py -3.12 -m pip install -r requirements.txt
+opentimelineio>=0.18
+pillow>=10

@@ -1,0 +1,101 @@
+{
+  "slug": "demo_fal",
+  "name": "fal-generated b-roll test",
+  "canvas": {
+    "w": 1080,
+    "h": 1920,
+    "fps": 30
+  },
+  "generate": [
+    {
+      "id": "after_room",
+      "model": "fal-ai/flux/dev",
+      "kind": "image",
+      "size": "portrait_16_9",
+      "prompt": "A bright, clean, decluttered living room staged for sale, tidy and minimal, sofa styled with two cushions, coffee table with a single plant, level straight-on composition, even daylight, airy and inviting, realistic real-estate listing photography, sharp, no people, no text"
+    },
+    {
+      "id": "before_room",
+      "model": "fal-ai/flux-pro/kontext",
+      "kind": "image",
+      "prompt": "Same room and same camera angle, now lived-in and cluttered: scattered clothes, dishes on the table, boxes against the wall, dimmer cooler light, slightly tilted phone snapshot feel",
+      "source_generated": "after_room"
+    },
+    {
+      "id": "walkthrough",
+      "model": "fal-ai/kling-video/v1.6/standard/image-to-video",
+      "kind": "video",
+      "duration": 5,
+      "prompt": "Slow steady interior dolly forward through a bright staged living room, natural daylight, subtle parallax, no people, calm real-estate tour feel",
+      "source_generated": "after_room"
+    }
+  ],
+  "footage": [
+    {
+      "generated": "before_room",
+      "in": 0.0,
+      "out": 3.2
+    },
+    {
+      "generated": "after_room",
+      "in": 0.0,
+      "out": 3.2
+    },
+    {
+      "generated": "walkthrough",
+      "in": 0.0,
+      "out": 5.0
+    }
+  ],
+  "overlays": [
+    {
+      "at": 0.0,
+      "dur": 3.0,
+      "card": {
+        "kicker": "Test",
+        "headline": "GENERATED SHOTS",
+        "subhead": "fal.ai fills the shots the footage cannot.",
+        "y_frac": 0.09,
+        "headline_frac": 0.058
+      }
+    },
+    {
+      "at": 6.6,
+      "dur": 3.0,
+      "card": {
+        "kicker": "The fix",
+        "headline": "STILLS AND MOTION",
+        "subhead": "One still, one clip, one cut.",
+        "y_frac": 0.1,
+        "headline_frac": 0.056
+      }
+    }
+  ],
+  "captions_mode": "burn",
+  "captions": [
+    {
+      "start": 0.3,
+      "end": 2.9,
+      "text": "This shot was generated, not filmed."
+    },
+    {
+      "start": 3.3,
+      "end": 6.4,
+      "text": "One still and one clip, from the same brief."
+    },
+    {
+      "start": 6.8,
+      "end": 10.6,
+      "text": "The cost of each job is in the review page."
+    },
+    {
+      "start": 10.8,
+      "end": 11.4,
+      "text": "That is the whole job."
+    }
+  ],
+  "render": {
+    "preset": "TikTok - 1080p",
+    "name": "demo_fal_v1"
+  }
+}

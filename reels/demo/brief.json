@@ -1,0 +1,98 @@
+{
+  "slug": "demo",
+  "name": "PixelSpryte spine test",
+  "canvas": {
+    "w": 1080,
+    "h": 1920,
+    "fps": 30
+  },
+  "footage": [
+    {
+      "path": "assets/media/demo_a.mp4",
+      "in": 0.0,
+      "out": 4.0
+    },
+    {
+      "path": "assets/media/demo_b.mp4",
+      "in": 0.0,
+      "out": 4.0
+    },
+    {
+      "path": "assets/media/demo_c.mp4",
+      "in": 0.0,
+      "out": 4.0
+    }
+  ],
+  "overlays": [
+    {
+      "at": 0.0,
+      "dur": 2.8,
+      "card": {
+        "kicker": "Your Brand",
+        "headline": "YOUR FIRST REEL",
+        "subhead": "Change this line in the brief.",
+        "y_frac": 0.09,
+        "headline_frac": 0.055
+      }
+    },
+    {
+      "at": 4.4,
+      "dur": 2.6,
+      "card": {
+        "kicker": "Card two",
+        "headline": "EVERY CARD IS EDITABLE",
+        "subhead": "Text, timing and size all come from the brief.",
+        "y_frac": 0.62,
+        "headline_frac": 0.05
+      }
+    },
+    {
+      "at": 9.4,
+      "dur": 2.6,
+      "card": {
+        "kicker": "Next step",
+        "headline": "READ THE REVIEW PAGE",
+        "subhead": "Spend, licences and checks are in there.",
+        "y_frac": 0.1,
+        "headline_frac": 0.058
+      }
+    }
+  ],
+  "captions": [
+    {
+      "start": 0.3,
+      "end": 2.6,
+      "text": "This is the first caption."
+    },
+    {
+      "start": 2.7,
+      "end": 3.95,
+      "text": "Change it in the brief."
+    },
+    {
+      "start": 4.4,
+      "end": 6.6,
+      "text": "The timing comes from the caption list."
+    },
+    {
+      "start": 6.7,
+      "end": 7.95,
+      "text": "Everything you see comes from one JSON file."
+    },
+    {
+      "start": 8.4,
+      "end": 10.4,
+      "text": "When the build is done, the review page shows the checks."
+    },
+    {
+      "start": 10.5,
+      "end": 11.9,
+      "text": "That is the whole loop."
+    }
+  ],
+  "render": {
+    "preset": "TikTok - 1080p",
+    "name": "demo_v1"
+  },
+  "captions_mode": "burn"
+}

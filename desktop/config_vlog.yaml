@@ -1,0 +1,78 @@
+# PixelSpryte Configuration — Family Vlog
+# Gentle cleanup editing for home footage: keep the real moments,
+# cut the dead air. Not a retention-optimized reel.
+#
+# Run: python run_webinar.py config_vlog.yaml
+
+llm:
+  backend: "openai_compatible"
+  api_url: "https://api.deepseek.com/v1"
+  api_key: ""                  # Leave empty — loaded from .env (DEEPSEEK_API_KEY)
+  model_name: "deepseek-v4-pro"
+  temperature: 0.3
+  max_tokens: 4096
+  top_p: 0.9
+
+brand:
+  name: "Family Vlog"
+  font: "Montserrat-Bold"
+  color_primary: "#F4A261"
+  color_secondary: "#264653"
+
+edit_defaults:
+  style: "vlog"              # Selects the family-vlog editing prompt
+  target_minutes: 10         # Adjust per vlog
+  allow_jumpcuts: true       # Cut dead air and fumbling
+  allow_zoom_ins: true       # Subtle punch-ins on reactions/key moments
+  zoom_max_scale: 1.12
+  captions: "srt"            # .srt sidecar generated (nothing burned in)
+  music: "none"              # Add manually in Resolve if wanted
+  broll: "none"
+  loudness_lufs: -14
+  duck_db: -20
+  remove_filler: false       # "Um"s are fine in family footage
+  remove_dead_air: true
+  remove_repeated_takes: true
+  keep_structure:
+    - "Opening"
+    - "Moments"
+    - "Highlight"
+    - "Closing"
+
+source_files:
+  # Option A: drop all clips in a folder — they are joined in filename order,
+  # so name them 01_xxx.mp4, 02_xxx.mp4, ...
+  video_dir: "inputs/vlog"
+
+  # Option B: list clips explicitly (overrides video_dir if non-empty)
+  video_clips: []
+
+  # Family vlogs use camera audio — leave empty (no external track)
+  audio_master: ""
+  script_reference: ""
+
+audio:
+  sync_method: "waveform"
+  replace_camera_audio: false
+  normalize: true
+  target_lufs: -14
+
+color:
+  lut_path: ""               # Optional .cube LUT applied to every clip
+
+subtitles:
+  resolve_ai: false          # true = also run Resolve AI captions after build
+
+review:
+  reason_markers: true       # Green marker on each clip: why the AI kept it
+
+export:
+  timeline_backup: true      # OTIO backup of every auto-edit
+
+paths:
+  project_root: "C:\\PixelSpryte"
+  inputs_dir: "inputs/vlog"
+  outputs_dir: "outputs/vlog"
+  synced_name: "vlog_merged.mp4"
+  edl_name: "vlog_edl.json"
+  davinci_renders: "D:\\Davinci"
