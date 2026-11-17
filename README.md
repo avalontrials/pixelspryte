@@ -81,8 +81,8 @@ from a brief. Read `desktop/README.md` before trusting either.
 
 ## Run it
 
-Requirements: Windows, DaVinci Resolve (the free version is enough, open it
-first), Python 3.12, ffmpeg. `doctor.py` checks all four.
+Requirements: Windows, DaVinci Resolve Studio (external scripting is a Studio
+feature — open it first), Python 3.12, ffmpeg. `doctor.py` checks all four.
 
 ```powershell
 git clone https://github.com/avalontrials/pixelspryte
